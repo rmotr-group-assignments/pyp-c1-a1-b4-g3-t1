@@ -1,11 +1,11 @@
 import sys
 
-def recursive_fibonacci(n, fibvalues=(0, 1)):
-    if n == 0:
+def recursive_fib(n, fibvalues=(0, 1)):
+    if n <= 0:
         return fibvalues[0]
-    return recursive_fibonacci(n - 1, (fibvalues[1], fibvalues[0] + fibvalues[1]))
+    return recursive_fib(n - 1, (fibvalues[1], fibvalues[0] + fibvalues[1]))
 
-def iterative_fibonnaci(n):
+def iterative_fib(n):
     a, b = 0, 1
     for i in xrange(n):
         a, b = b, a + b
@@ -41,7 +41,7 @@ def main(init_recursive):
         print "Must pass Y or N"
         return
         
-    fib_num = recursive_fibonacci(user_n) if recursive else iterative_fibonnaci(user_n)
+    fib_num = recursive_fib(user_n) if recursive else iterative_fib(user_n)
     print fib_num
 
 if __name__ == '__main__':
