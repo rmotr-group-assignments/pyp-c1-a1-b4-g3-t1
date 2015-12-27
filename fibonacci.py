@@ -12,8 +12,8 @@ def iterative_fibonnaci(n):
         
     return a
     
-def prompt_recursive():
-    user_option = raw_input("Use recursive function? ").lower()
+def validate_recursive_option(user_input):
+    user_option = user_input.lower()
     if user_option == "y":
         return True
     elif user_option == "n":
@@ -22,21 +22,21 @@ def prompt_recursive():
         raise ValueError()
     
     
-def get_n():
-    user_n = int(raw_input("Nth fibonacci number? "))
+def validate_fib_n(user_input):
+    user_n = int(user_input)
     if user_n < 0:
         raise ValueError()
     return user_n
     
 def main(init_recursive):
     try:
-        user_n = get_n()
+        user_n = validate_fib_n(raw_input("Nth fibonacci number: "))
     except ValueError:
         print "Fibonnaci Number must be non-negative"
         return
     
     try:
-        recursive = True if init_recursive else prompt_recursive()
+        recursive = True if init_recursive else validate_recursive_option(raw_input("Use recursive function? "))
     except ValueError:
         print "Must pass Y or N"
         return
